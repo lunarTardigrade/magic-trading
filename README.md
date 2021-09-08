@@ -5,7 +5,7 @@ You must have a BASIC subscription to TAAPI.IO for this to work.
 
 Modify the config file to add your TAAPI.IO key, email address to recieve trading alerts, email address and password to send alerts from
 
-You can modify the symbols to include any pair available on binance
+You can modify the symbols to include any pair available on binance, but I would keep it to 10 at most 10 pairs because api calls are throttled so that only a basic subscription is needed... all api calls need to be done before the next 15 minute candle is published, so more than 10 assets will possibly push it over espessually for the end of day and midday checks.
 
 Whenever you execute the script it will check only new candles published within that quarter hour... so if you want it always checking, set up a cron, or windows task, to execute the script every 15 mins.  (1 thing todo for sure; to figure out which candles to check, its looking at the system clock.  I assume the system clock is PST, because I was thinking this was just for me, but clearly there needs to be work to make this more flexable.)
 
