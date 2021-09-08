@@ -14,14 +14,11 @@ logging.basicConfig(filename='check.log', filemode='a', format='%(asctime)s - %(
 logger=logging.getLogger()
 logger.setLevel(logging.INFO)
 og_stdout = sys.stdout
-#secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsb3BlcjAxQGdtYWlsLmNvbSIsImlhdCI6MTYyMDc2OTI3MCwiZXhwIjo3OTI3OTY5MjcwfQ.D67mNYjebSGfyVXEYiY9Liv9JoM0hoZO_410tuGmcAE'
 api_url_vwma = 'https://api.taapi.io/vwma'
 api_url_ma = 'https://api.taapi.io/sma'
 api_url_candle = 'https://api.taapi.io/candle'
-#symbols = ['BTC/USDT','ETH/USDT','BCH/USDT','ADA/USDT','XLM/USDT','DOT/USDT','XTZ/USDT','MATIC/USDT','BNT/USDT']
 periods = ['3d','1d','12h','4h','6h','8h','2h','1h','30m','15m']
 allperiods = ['1m','3m','5m','15m','30m','1h','2h','4h','6h','8h','12h','1d','3d','1w','1M']
-#emails = ['aloper01@gmail.com', 'luboslav.velikov@gmail.com', 'bensfamilymember1@gmail.com', 'Jeremy.bohr@gmail.com']
 queue = []
 triggers = []
 i=0
@@ -284,13 +281,13 @@ def pick_and_queue():
 
 def send_email(trigger,symble, limit, interval, price,confidence):
     port = 465
-    sender_email = "alerting.guy@gmail.com"
-    password = "g@m3Stop!"
+    sender_email = get_config("sender_email")
+    password = get_config("password")
     context = ssl.create_default_context()
     content  = "Subject: "+ trigger + " " + symble + "("  + interval + ") | limit: " + str(limit) + " | last price: " + str(price) + " | confidence:" + confidence + " | " + str(now().strftime("%b %d %Y %H:%M:%S"))
     with smtplib.SMTP_SSL("smtp.gmail.com",port,context=context) as server:
         server.set_debuglevel(1)
-        server.login("alerting.guy@gmail.com", password)
+        server.login(sender_email, password)
         emails = get_config("emails")
         for each in emails:
             server.sendmail(sender_email, each, content)
