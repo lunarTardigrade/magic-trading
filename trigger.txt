@@ -1,0 +1,1 @@
+{'time': '2021-09-03 22:38:07.989848', 'symbol': 'FAKE', 'interval': '15m', 'trigger': 'BUY', 'price': 120, 'limit': 123, 'confidence': '17/28'}
