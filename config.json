@@ -1,0 +1,7 @@
+{
+    "symbols" : ["BTC/USDT", "ETH/USDT", "BCH/USDT", "ADA/USDT","XLM/USDT","DOT/USDT","XTZ/USDT","MATIC/USDT","BNT/USDT"],
+    "emails" : ["recipients.email.com"],
+    "secret" : "taapi.io Key BASIC plan 5 calls per 15 seconds",
+    "sender_email" : "sender.email.com",
+    "password" : "senderEmailpassword"
+}
